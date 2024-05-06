@@ -1,0 +1,390 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAAD0AAAAdCAYAAAAZzmTfAAADa0lEQVR4nO3YW4xeUxQH8N+nGJn2QcyIu0Tw4DaoS4OGJqpBSCdKXUITlxASIRIRniZpmko88SAI4hZCCY1bQtsUJUJcWtK4xaUuFZT2gSkt42Htr3PmzHe++eacY6SZ/pOdb5991l7r/Pe311p77cbAwIDJhp0qzp+G5WjU8C1V0YOXMs9n4X48i9OzglVJX4mnMFRRTx6zMDDOORvwPU5Kzy/jKlyO+VnBqqQvwdJxyB+L1/AFrsES7FPC7tvYP/WPwAupvxQX52Rvwb3ZgZ1LGGxiV+yNHzuU78aTOAe/4gM8j/XjtNsQC/Vdeu7DR6n/vpE7ZCFWpPFtqEK6FxtzYx8XyM7BCXgDn6WxvXBHTm5Z0jsttf403o+vU/9gfJmZkyX9s+GdcwXOxZ44CPc1J1QhPYiu3NiRbeSPNrzih+E9fJWTmZ1+Zyn26yxJmI7HU78Lm1P/wdRGoYpP/ya2eKcLtwX7iu25MM0tgz7hKgThU/Fpej4Ea8dSUDWQrcSMDmUfE2nkExF4NuKmEjb7MDXpuRrf4NL07jQRtduiyvaGe0TaerMD2W/FP9PEQ21kV6bWCoeLLDDY4t1czBvrQ6qSfkf4cUP9uboVpuJvrQn34C7hdm1RlTQFweI/wu8iL7fCBjzXiZKqPr1dYgfpDOaJKPgL/sLnuA1TMjJD22vLk56CJ/C0yHlLcDf+wSIj/bcxge1sPCB8dnZVfXnSd+Ii3C5OTdfiRhGh38ICkTKq4ACRjtZiNc7rYE5hxVQGWdIzcJ2oVG7F1sy7LXg4I1cFW3GDWLwzxEJ3t50xjFEVUxlkU9b14u//Q+szb/NcXfXCYL3hyuonkVd7sQ4nily7Bw5NMgvwqIKKqQyypOek33w9mse6qkYzOB67iNNatziqzseHwodXp7HCiqkMmqR3SwpfF+fXiUAPHhHH2CERoFYJwkQltXt6V1gxlUHTp5tbtrcuxWOgS9xdLRYBkvDxbD1+jBq2cis0SQ9iTTJcFE1nGpmny6Ihio0Vwleb2ISjUn+6IP1qDfZGIevTN+NFPCNuMNaIRdkPxwnfO7AGm6fgwqS/P41dJi4C5opt/QMuwJ812BuFLOlXcLJICzPFzcUmEWmXiVvPOrBK8UnwzJpstEW+ynoX50+E4f8TOwqOyYJJSfpf0fbSUmLKd1QAAAAASUVORK5CYII=\n",
+      "text/latex": [
+       "$\\displaystyle e^{\\frac{\\left(- \\alpha + \\mu\\right)^{2}}{2 \\sigma^{2}}}$"
+      ],
+      "text/plain": [
+       "         2\n",
+       " (-α + μ) \n",
+       " ─────────\n",
+       "       2  \n",
+       "    2⋅σ   \n",
+       "ℯ         "
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAABsAAAASCAYAAACq26WdAAABdklEQVR4nN3Vv0vVURjH8de1DByiJcJNEoIGIx1Kr5DXoQhyqailpUlwLdq6xAUHae4fcHAJdVMxMQIbCgehoUEQMQiiEiyNflBRwznC4WDde7kXgx44fDjPc87z/j5fPny/hUqlYr+iJdtfwwM8xTZ+YaKGPucwjTf4FnUBl9JDB7NLZZzGJ7zGyRpAZYxiEzMRdBQ9GMTcn2C3ImQNJTypAroeQYu4ip2s3ppucli15mm04D4+48YeIPj+N1g90Y/jmMIWhtCFr1jGs/xCI7AzUd9iBaey+pJguPe7idyN9cSxqCNow3kcFqZ7hAFMphcagR2IWhAmeCy4+CWuCEYrodgM2FbUdbzIal+E6eBsM2CrUT9UeZi2ZsCW8AMncGiPelfUjWbANvEQR3Avq13ARXzE/G4yt/7luKA9ahHjCeBOcv42enFXcN8yOgSD/MSw5DXnsG7czHKdccGrDPYuwsoR0Cd8SWYxhudpo8K//MX8P7Dfc2dMHIO1yE4AAAAASUVORK5CYII=\n",
+      "text/latex": [
+       "$\\displaystyle 16$"
+      ],
+      "text/plain": [
+       "16"
+      ]
+     },
+     "execution_count": 8,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "import sympy as sym\n",
+    "from IPython.display import display,Math\n",
+    "\n",
+    "sym.init_printing()\n",
+    "\n",
+    "mu,alpha,sigma = sym.symbols('mu,alpha,sigma')\n",
+    "\n",
+    "expr = sym.exp((mu-alpha)**2 / (2*sigma**2))\n",
+    "\n",
+    "display(expr)\n",
+    "\n",
+    "x,y = sym.symbols('x,y')\n",
+    "expr = x+4+y*2\n",
+    "# expr.subs(x,6)\n",
+    "expr.subs({x:6,y:3})"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/latex": [
+       "$\\displaystyle \\frac{3}{x}$"
+      ],
+      "text/plain": [
+       "<IPython.core.display.Math object>"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "data": {
+      "text/latex": [
+       "$\\displaystyle \\frac{3}{4}$"
+      ],
+      "text/plain": [
+       "<IPython.core.display.Math object>"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "from IPython.display import display,Math \n",
+    "\n",
+    "expr = 3/x\n",
+    "display(Math(sym.latex(expr)))\n",
+    "\n",
+    "# also do it like this:\n",
+    "display(Math(sym.latex(sym.sympify('3/4'))))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/latex": [
+       "$\\displaystyle \\text{With x = }-2: x^{2}+4 \\quad \\Rightarrow \\quad -2^2+4=8$"
+      ],
+      "text/plain": [
+       "<IPython.core.display.Math object>"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "data": {
+      "text/latex": [
+       "$\\displaystyle \\text{With x = }-1: x^{2}+4 \\quad \\Rightarrow \\quad -1^2+4=5$"
+      ],
+      "text/plain": [
+       "<IPython.core.display.Math object>"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "data": {
+      "text/latex": [
+       "$\\displaystyle \\text{With x = }0: x^{2}+4 \\quad \\Rightarrow \\quad 0^2+4=4$"
+      ],
+      "text/plain": [
+       "<IPython.core.display.Math object>"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "data": {
+      "text/latex": [
+       "$\\displaystyle \\text{With x = }1: x^{2}+4 \\quad \\Rightarrow \\quad 1^2+4=5$"
+      ],
+      "text/plain": [
+       "<IPython.core.display.Math object>"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "data": {
+      "text/latex": [
+       "$\\displaystyle \\text{With x = }2: x^{2}+4 \\quad \\Rightarrow \\quad 2^2+4=8$"
+      ],
+      "text/plain": [
+       "<IPython.core.display.Math object>"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "for i in range(-2,3):\n",
+    "    # ans = i**2+4\n",
+    "    # same as\n",
+    "    ans = (x+4).subs(x,i**2)\n",
+    "    display(Math('\\\\text{With x = }%g: x^{2}+4 \\\\quad \\\\Rightarrow \\\\quad %g^2+4=%g' %(i,i,ans)))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Hi, his name is Mike and I have 7 kids.\n"
+     ]
+    }
+   ],
+   "source": [
+    "# f-strings\n",
+    "svar = 'Mike'\n",
+    "nvar = 7\n",
+    "\n",
+    "print(f'Hi, his name is {svar} and I have {nvar} kids.')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 25,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/latex": [
+       "$\\displaystyle \\frac{\\frac{3}{x}}{y}$"
+      ],
+      "text/plain": [
+       "<IPython.core.display.Math object>"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "data": {
+      "text/latex": [
+       "$\\displaystyle \\frac{\\frac{3}{x}}{y}$"
+      ],
+      "text/plain": [
+       "<IPython.core.display.Math object>"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "x,y = sym.symbols('x,y')\n",
+    "\n",
+    "expr = 3/x\n",
+    "\n",
+    "display(Math(f'\\\\frac{{{sym.latex(expr)}}}{{y}}'))\n",
+    "display(Math('\\\\frac{%s}{%s}'%(sym.latex(expr),y)))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 56,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/latex": [
+       "$\\displaystyle \\frac{x^y}{x^z}=x^y*x^{-z}=x^{y-z}$"
+      ],
+      "text/plain": [
+       "<IPython.core.display.Math object>"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAADkAAAAUCAYAAAA3KpVtAAACPElEQVR4nO3WT4hOURjH8c9MU6wopUYpCxZGMhbs/JkUSqGMhGgWLEQRpcZMw5ssJhTCQlIkG9koG1JjZSR/siB/d1NGCIka0lic+9btzJ15753buzD51tP73vM853fPc89znnsbKpWKiU5jyfkDOBCNLcQQ5pXUzksnhjPsSDWgbJL9WByNncJFvCipnZfzmJGyMxjEtWpAU8kb9GN36rodrdhYUrcI3xODLmxCG95WA8ru5APMxjRMwnEcxecSmhXZ5Ze2tox53diT+F6lHXGSdxKRDdF4Ay4nvt7U+GP8wiLsx2+hfGKK6J5DSw17GOn0YBeW43V887hcD+IJjuEm/iTjJ9EhnLXOVPwQnmJt4t+aJBpTRPdTYnk5jJ3CDr7LCoh38hmuCk9rezLWJXTQ68LTiukXyqQft0ZZyHh089CNvdiMH2hObHI6qCHjPTkTb/BBeNJncRvrhNKM6cAloeE8H2NBRXVr0YCvmJLhW4G+6kVW4xnAacxKFnJfOEujLWQbLhg7wfHo1mIYU4VkY+tLB472CvmY+r8DPyN/I6YnvvlC285DLd26kLWTW4RyGkyu92XELMN74Xy140uOe+XRrQtxkmtwRSi9BXgpdK65Udy9ZG6LUHa1yKtbF9JJLsEN4eysEkqrRyjp3pFTc1Mv3dxUk2wV2v83rBRKUbK4R1iPpePQr5duIRoxR2jlw1ht5Av1UPJ7oqB2vXQL0yR8yDaPEXNXaMtFqZduYcp+oP8T/E9yovAXusiih9isWTUAAAAASUVORK5CYII=\n",
+      "text/latex": [
+       "$\\displaystyle x^{y} x^{- z}$"
+      ],
+      "text/plain": [
+       " y  -z\n",
+       "x ⋅x  "
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAADEAAAAUCAYAAAAk/dWZAAACF0lEQVR4nO3WTYiOURQH8N9MUyxEKTVWFiyMZCzY+ZgUSkkZ+YosWIgiisZ88CZqQiEsZEOykY2yITU2vJLPBSF2U6aQJGpGjMW9bz3deWbMeDLzKv86ve8953/vPec5H89TUyqV/OuoLbi/G3sT3Vz0YlbBsytoQX+OHKoQigZRxvxEdxIX8KLg2RWcw9SMnEYPrlQIdQUvKGNHZt2MRqwpeG4WX6JAK9aiCW8qhKKZuI/pmIxxOIbD+JjDLckvi6w0DXFXG3ZGzqusIQ3iVjxsdaKvwcVo68zoH6EP87AH34X05+EsGn4jDwbZ24HtWIzXqTEtp314jCO4jh9RfwJbhFpvyfB78QQro31jDCQPH6KMFAexTcjA2zxCmolnuCw8lc1R1ypMoKvC00hRFtJcxo0/cHIotGEX1uMr6qOMz5LyGrsd64QanoCjuCkE9TOH/zTq01FbFDXYj4m4m9iWoKuyyGvsbpzCNJzBPaFH+ga5bBPO43kRj3PQj0lCMKl0ZYmDjdj3mf9b8S2x12JKtM0Wxt6YIS8TG4RG7onr3TmcRXgnlFgzPv0V74aJNIgVuCSUxhy8FCbDzIR3J+5tEMptTJENYgGuCT2xTCipDqHkOgdurR5UgmgUxuNnLBVKhRDUQ6zCwlH3bpioxQxhhPZjuYEvlAPx9/go+jUi1AkfUvVDcG4LY61qUfQDsCrwP4hqwS/gh3MmytQjlgAAAABJRU5ErkJggg==\n",
+      "text/latex": [
+       "$\\displaystyle x^{y - z}$"
+      ],
+      "text/plain": [
+       " y - z\n",
+       "x     "
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "#Three main syntaxes for printing formulas:\n",
+    "import sympy as sym\n",
+    "from IPython.display import display,Math\n",
+    "# these are the same:\n",
+    "x,y,z = sym.symbols('x,y,z')\n",
+    "display(Math('\\\\frac{x^y}{x^z}=x^y*x^{-z}=x^{y-z}'))\n",
+    "# same as:\n",
+    "# expr = (x**y)/(x**z)\n",
+    "# display(Math(sym.latex(expr)))\n",
+    "# same as:\n",
+    "sym.init_printing()\n",
+    "display(expr)\n",
+    "display(sym.simplify(expr))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 58,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/latex": [
+       "$\\displaystyle \\text{True}$"
+      ],
+      "text/plain": [
+       "True"
+      ]
+     },
+     "execution_count": 58,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "sym.Eq(5,2+3)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 68,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "List element 0 is 3 and is of type <class 'int'>\n",
+      "List element 1 is ['3', '4', '5'] and is of type <class 'int'>\n",
+      "List element 2 is 5 and is of type <class 'int'>\n",
+      "List element 3 is [4, 5, 6] and is of type <class 'int'>\n",
+      "List element 0 is M and is of type str'>\n",
+      "List element 1 is i and is of type str'>\n",
+      "List element 2 is k and is of type str'>\n",
+      "List element 3 is e and is of type str'>\n"
+     ]
+    },
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAAB4AAAASCAYAAABM8m7ZAAAAs0lEQVR4nO3UvQ5BQRAF4I+o1UpRiI5W7QUUerVSolTcd/ACCu+h8BwSElGpRKGjsLe5QS5ZPwknOdnJ5uyczO7MFpIk8QkUI+frYYIF9jhhdk1Yimw8RhMHbNC4JYxd8RB1lDG4J4xd8TyvMHbFufE3XrmMQF5eHZU8yDbXEscHzm9jGXeeTfQovuaN34bYH0g3ECphbWMa4h1GrzBuoZ/ZqwXCOjWOfdUJCndYTYW/11xnPtAfnkU9tiEAAAAASUVORK5CYII=\n",
+      "text/latex": [
+       "$\\displaystyle -1$"
+      ],
+      "text/plain": [
+       "-1"
+      ]
+     },
+     "execution_count": 68,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "aList = [ 3,['3','4','5'],5,[4,5,6] ]\n",
+    "\n",
+    "for item in range(len(aList)): #range uses index\n",
+    "    print(f'List element {item} is {aList[item]} and is of type {type(item)}')\n",
+    "    \n",
+    "s = 'Mike'\n",
+    "for index,item in enumerate(s):\n",
+    "    t = str(type(item))[8:]\n",
+    "    # print(i,letter)\n",
+    "    print(f'List element {index} is {item} and is of type {t}')\n",
+    "t\n",
+    "apost = t.find(\".\")\n",
+    "apost"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.5"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
